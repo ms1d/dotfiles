@@ -1,0 +1,162 @@
+clear
+
+# =========================
+# Environment
+# =========================
+
+export EDITOR=nvim
+
+typeset -U path
+path+=("$HOME/.dotnet")
+path+=("$HOME/.local/bin")
+export PATH
+
+# =========================
+# History
+# =========================
+
+HISTSIZE=5000
+SAVEHIST=5000
+HISTFILE=~/.zsh_history
+
+setopt appendhistory
+setopt sharehistory
+setopt inc_append_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt extended_history
+setopt hist_find_no_dups
+
+# =========================
+# Completion
+# =========================
+
+autoload -Uz compinit
+compinit -C
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+
+# =========================
+# Plugins (ORDER MATTERS)
+# =========================
+
+# fzf-tab FIRST
+source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
+
+# Autosuggestions AFTER fzf-tab
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zoxide
+eval "$(zoxide init zsh)"
+alias cd='z'
+
+# =========================
+# Aliases
+# =========================
+
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -lh --icons --group-directories-first'
+alias la='eza -la --icons --group-directories-first'
+alias grep='grep --color=auto'
+
+# =========================
+# Keybindings
+# =========================
+
+bindkey -v
+KEYTIMEOUT=1
+
+bindkey -M viins '^[[1;5D' backward-word
+bindkey -M viins '^[[1;5C' forward-word
+bindkey -M vicmd '^[[1;5D' backward-word
+bindkey -M vicmd '^[[1;5C' forward-word
+
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^U' kill-whole-line
+
+bindkey -M viins '^[[A' history-search-backward
+bindkey -M viins '^[[B' history-search-forward
+bindkey -M vicmd '^[[A' history-search-backward
+bindkey -M vicmd '^[[B' history-search-forward
+
+# =========================
+# fzf Widgets
+# =========================
+
+fzf-history-widget() {
+    local selected
+    selected=$(fc -rl 1 | sed 's/^[ ]*[0-9]\+[ ]*//' \
+        | fzf --height=40% --reverse --query="$LBUFFER") || return
+    LBUFFER=$selected
+}
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
+
+fzf-file-widget() {
+    local selected
+    selected=$(fdfind --type f --hidden --follow --exclude .git \
+        | fzf --height=40% --reverse --query="$LBUFFER") || return
+    LBUFFER+="$selected"
+}
+zle -N fzf-file-widget
+bindkey '^T' fzf-file-widget
+
+fzf-cd-widget() {
+    local selected
+    selected=$(fdfind --type d --hidden --follow --exclude .git \
+        | fzf --height=40% --reverse) || return
+    cd "$selected"
+}
+zle -N fzf-cd-widget
+bindkey '^[c' fzf-cd-widget
+
+# =========================
+# Shell Behavior
+# =========================
+
+setopt autocd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt extendedglob
+setopt noclobber
+setopt nomatch
+
+# =========================
+# Prompt
+# =========================
+
+autoload -Uz colors && colors
+setopt prompt_subst
+
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd vcs_info
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:*' check-for-changes false
+
+function zle-keymap-select {
+    MODE=$([[ $KEYMAP == vicmd ]] && echo NORMAL || echo INSERT)
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-init {
+    MODE="INSERT"
+    zle reset-prompt
+}
+zle -N zle-line-init
+
+PROMPT='
+%{%F{1}%}%n@%m%{%f%} %{%F{4}%}%~%{%f%} %{%F{5}%}${vcs_info_msg_0_}%{%f%} %(?..%{%F{1}%}[%?]%{%f%})
+[%{%F{3}%}${MODE}%{%f%}] %{%F{2}%}>%{%f%} '
+
+RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
+
+# Syntax Highlighting MUST be last
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
