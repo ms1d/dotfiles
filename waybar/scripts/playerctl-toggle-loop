@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Toggle MPRIS loop mode for playerctld
+
+player="playerctld"
+
+# Get current loop state
+current_state=$(playerctl -p "$player" loop 2>/dev/null)
+
+case "$current_state" in
+    None)
+        # No looping → loop the current track
+        playerctl -p "$player" loop Track
+        ;;
+    Track)
+        # Track looping → loop the playlist
+        playerctl -p "$player" loop Playlist
+        ;;
+    Playlist)
+        # Playlist looping → disable looping
+        playerctl -p "$player" loop None
+        ;;
+    *)
+        # Fallback: reset to None
+        playerctl -p "$player" loop None
+        ;;
+esac
+

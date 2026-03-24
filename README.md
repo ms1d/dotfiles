@@ -1,9 +1,28 @@
-# MS1D/DOTFILES
+# dotfiles
 
-Configuration files for:
+Personal configuration files for various tools and environments.
 
-* Hypr
+## Overview
 
-* Nvim
+This repository contains configurations for:
 
-* Zsh
+- **Hyprland**
+- **Neovim**
+- **Zsh**
+- **Waybar**
+
+## Installation
+
+To use these dotfiles, symlink the desired directories or files.
+
+Example for Neovim:
+
+```bash
+ln -s ~/dotfiles/nvim ~/.config/nvim
+```
+
+For Zsh, choose the file corresponding to your machine:
+
+```bash
+ln -s ~/dotfiles/zsh/zshrc_arch ~/.zshrc
+```

@@ -1,23 +1,34 @@
-# ZSH CONFIGURATION
+# Zsh Configuration
 
-## What you'll need
+Modular Zsh configurations tailored for different machines and distributions.
 
-- fzf
+## Requirements
 
-- zsh-autosuggestions
+Ensure the following tools and plugins are installed:
 
-- zoxide
+- **fzf**: Fuzzy finder
+- **zoxide**: Smarter `cd` command
+- **eza**: Modern replacement for `ls`
+- **zsh-autosuggestions**: Fish-like suggestions
+- **zsh-syntax-highlighting**: Syntax highlighting for the shell
+- **fzf-tab**: Fzf-based completion
 
-- eza
+## Configuration Files
 
-- zsh-syntax-highlighting
+- `zshrc_arch`: Main configuration for Arch Linux
+- `zshrc_hp_desktop`: Specialized config for HP desktop setup (personal server)
+- `zshrc_surface`: Configuration for my Surface Laptop Go 1 (not used often)
 
-- fzf-tab
+## Installation
+
+Choose the configuration file that matches your device and symlink it.
+
+```bash
+# Example for Arch Linux
+ln -s ~/dotfiles/zsh/zshrc_arch ~/.zshrc
+```
 
 ## Notes
 
-- Some are distro packages, others are zsh plugins.
-
-- Google when necessary.
-
-- Paths of zsh plugins are not the same on all devices!
+- Some tools are installed via distro packages, while others are Zsh plugin
+- Plugin paths may vary between devices; check and adjust if necessary.

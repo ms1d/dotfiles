@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Cooldown file
+STATE="/tmp/mpris-scroll-lock"
+
+# Cooldown in milliseconds
+COOLDOWN=300
+
+now=$(date +%s%3N)
+
+# If lock exists and hasn't expired, ignore the scroll
+if [[ -f "$STATE" ]]; then
+    last=$(cat "$STATE")
+    if (( now - last < COOLDOWN )); then
+        exit 0
+    fi
+fi
+
+# Update lock timestamp
+echo "$now" > "$STATE"
+
+# Run the actual command
+playerctl "$1"

@@ -1,0 +1,114 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    // Left / center / right layout
+    "modules-left": ["hyprland/workspaces", "custom/powerprofiles", "custom/mpris-loop", "custom/mpris-rewind", "mpris", "custom/mpris-next", "custom/mpris-shuffle"],
+    "modules-center": ["backlight", "clock", "wireplumber"],
+    "modules-right": ["bluetooth", "battery", "memory", "network"],
+
+    //TODO - make mpris more resistant to multiple audio sources
+    "mpris": {
+        "format": "{title} - {artist} [{length}]",
+        "format-paused": " <i>{title} - {artist} [{length}]</i>",
+        "player": "playerctld",
+        "max-length": 70,
+        "escape": true,
+        "on-scroll-up": "~/.config/waybar/scripts/mpris-scroll previous",
+        "on-scroll-down": "~/.config/waybar/scripts/mpris-scroll next",
+        "scroll-step": 500
+    },
+
+    "custom/mpris-loop": {
+        "exec-if": "playerctl -p playerctld status >/dev/null 2>&1",
+        "exec": "bash -c 's=$(playerctl -p playerctld loop); [[ $s == Track ]] && echo ⟲¹ || [[ $s == Playlist ]] && echo ⟲ || echo ∅'",
+        "format": "{}",
+        "on-click": "~/.config/waybar/scripts/playerctl-toggle-loop",
+        "tooltip": false,
+        "interval": 1
+    },
+
+    "custom/mpris-rewind": {
+        "exec": "playerctl -p playerctld status >/dev/null 2>&1 && echo ''",
+        "interval": 1,
+        "format": "{}",
+        "on-click": "playerctl -p playerctld previous",
+        "tooltip": false
+    },
+
+    "custom/mpris-next": {
+        "exec": "playerctl -p playerctld status >/dev/null 2>&1 && echo ''",
+        "interval": 1,
+        "format": "{}",
+        "on-click": "playerctl -p playerctld next",
+        "tooltip": false
+    },
+
+	//PROBLEM - pausing from phone does not update!
+    "custom/mpris-start-stop": {
+        "exec-if": "playerctl -p playerctld status >/dev/null 2>&1",
+        "exec": "cat /tmp/mpris-icon 2>/dev/null || echo ''",
+        "on-click": "bash -c 'icon=$(cat /tmp/mpris-icon 2>/dev/null || echo \"\"); [[ \"$icon\" == \"\" ]] && icon=\"\" || icon=\"\"; echo \"$icon\" > /tmp/mpris-icon; playerctl -p playerctld play-pause &'",
+        "format": "{}",
+        "interval": 1,
+        "tooltip": false
+    },
+
+    "custom/mpris-shuffle": {
+        "exec-if": "playerctl -p playerctld status >/dev/null 2>&1",
+        "exec": "bash -c 'playerctl -p playerctld shuffle 2>/dev/null || echo Off'",
+        "on-click": "bash -c 'playerctl -p playerctld shuffle \"$( [ \"$(playerctl -p playerctld shuffle 2>/dev/null)\" = \"On\" ] && echo Off || echo On )\"'",
+        "format": " {}",
+        "tooltip": false,
+        "interval": 1
+    },
+
+    "wireplumber": {
+        "format": "  {volume}%",
+        "tooltip": false
+    },
+
+    //Sun emoji used
+    "backlight": {
+        "format": "☀️ {percent}%",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%a %d %b  %H:%M}",
+        "tooltip": false
+    },
+
+    "battery": {
+        "format": "{capacity}%  {icon} ",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "memory": {
+        "format": "{}% RAM",
+        "interval": 1,
+        "poll": true
+    },
+
+    "network": {
+        "format-wifi": "   {essid}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "Disconnected",
+        "tooltip": false
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": " off",
+        "format-connected": " {device_alias}"
+    },
+
+    "custom/powerprofiles": {
+        "format": "Mode: {}",
+        "exec": "powerprofilesctl get",
+        "on-click": "~/.local/bin/cycle-power-profile",
+        "interval": 1,
+        "tooltip": false
+    }
+}
