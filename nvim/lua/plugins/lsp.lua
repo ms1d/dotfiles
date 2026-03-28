@@ -18,7 +18,7 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "clangd", "lua_ls", "vtsls", "tailwindcss", "pylsp", "marksman" },
+                ensure_installed = { "clangd", "lua_ls", "tailwindcss", "pylsp", "marksman" },
                 automatic_installation = true,
             })
         end,
@@ -74,16 +74,6 @@ return {
                         diagnostics = {
                             globals = { "vim" },
                             enable = true,
-                        },
-                    },
-                },
-            })
-
-            vim.lsp.config("vtsls", {
-                settings = {
-                    vtsls = {
-                        tsserver = {
-                            useSyntaxServer = "never",
                         },
                     },
                 },
