@@ -201,3 +201,6 @@ RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
 # -----------------------------
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
