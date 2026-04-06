@@ -430,7 +430,7 @@ return {
                         local count = self.status_dict.removed or 0
                         return count > 0 and ("-" .. count)
                     end,
-                    hl = { fg = "git_del" },
+                    hl = { fg = "#e06871" },
                 },
                 {
                     condition = function(self) return self.has_changes end,
