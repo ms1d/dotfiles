@@ -202,5 +202,28 @@ RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# nvm
-source /usr/share/nvm/init-nvm.sh
+# Lazy-load NVM
+function nvm() {
+    unset -f nvm node npm npx
+    [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+    nvm "$@"
+}
+
+function node() {
+    unset -f nvm node npm npx
+    [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+    node "$@"
+}
+
+function npm() {
+    unset -f nvm node npm npx
+    [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+    npm "$@"
+}
+
+function npx() {
+    unset -f nvm node npm npx
+    [ -s "/usr/share/nvm/init-nvm.sh" ] && source /usr/share/nvm/init-nvm.sh
+    npx "$@"
+}
+
