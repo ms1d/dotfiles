@@ -64,8 +64,25 @@ return {
 
             -- Configure specific servers using the new vim.lsp.config API
 
+			local function clangd_probe()
+				local def = { "clangd", "--background-index", "--clangd-tidy" }
+				local root = vim.fs.root(0, { "compile_commands.json", "CMakeLists.txt" })
+
+				if root == nil then
+					return def
+				end
+
+				local wrapper = root .. "/tools/clangd"
+
+				if vim.fn.executable(wrapper) == 1 then
+                    return { wrapper }
+                end
+
+				return def
+			end
+
             vim.lsp.config("clangd", {
-                cmd = { "clangd", "--background-index", "--clang-tidy" },
+                cmd = clangd_probe(),
             })
 
             vim.lsp.config("lua_ls", {
