@@ -12,8 +12,8 @@ path+=("$HOME/.local/bin")
 path+=("$HOME/.local/share/nvim/mason/bin")
 export PATH
 
-# ESP-IDF
-. %HOME/esp/esp-idf/export.sh
+# ESP-IDF helper
+alias load-idf=". $HOME/esp/esp-idf/export.sh"
 
 # -----------------------------
 # History
