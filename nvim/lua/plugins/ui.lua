@@ -1,15 +1,19 @@
 return {
 	{
-		"3rd/image.nvim",
-		opts = {
-			backend = "kitty",
-			integrations = {
-				markdown = {
-					enabled = true
-				}
-			}
-		}
-	},
+  "folke/snacks.nvim",
+  opts = {
+    image = {
+      enabled = true,
+
+      doc = {
+        inline = false,
+        float = true,
+        max_width = 80,
+        max_height = 40,
+      },
+    },
+  },
+},
     {
         "folke/tokyonight.nvim",
         lazy = false,
