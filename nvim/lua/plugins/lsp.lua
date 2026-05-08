@@ -65,7 +65,7 @@ return {
             -- Configure specific servers using the new vim.lsp.config API
 
 			local function clangd_probe()
-				local def = { "clangd", "--background-index", "--clangd-tidy" }
+				local def = { "clangd", "--background-index", "--clang-tidy" }
 				local root = vim.fs.root(0, { "compile_commands.json", "CMakeLists.txt" })
 
 				if root == nil then
