@@ -167,7 +167,7 @@ return {
                 routes = {
                     {
                         filter = {
-                            find = "'height': expected positive Integer",
+                            find = "nui/popup/border.lua",
                         },
                         opts = { skip = true },
                     },
