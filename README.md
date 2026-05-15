@@ -10,6 +10,7 @@ This repository contains configurations for:
 - **Neovim**
 - **Zsh**
 - **Waybar**
+- **Kitty**
 
 ## Installation
 
