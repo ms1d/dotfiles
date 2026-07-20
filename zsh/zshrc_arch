@@ -5,15 +5,14 @@
 export EDITOR=nvim
 export REMARK_CONFIG="$HOME/.config/nvim"
 
+eval "$(batman --export-env)"
+
 # Deduplicate PATH
 typeset -gU PATH path
 path+=("$HOME/.dotnet/tools")
 path+=("$HOME/.local/bin")
 path+=("$HOME/.local/share/nvim/mason/bin")
 export PATH
-
-# ESP-IDF helper
-alias load-idf=". $HOME/esp/esp-idf/export.sh"
 
 [ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
 
@@ -111,11 +110,10 @@ bindkey -M viins '^U' kill-whole-line
 # global default search
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 
-# preview configuration
-export FZF_DEFAULT_OPTS="
-  --preview '[[ -d {} ]] && eza -la --color=always --group-directories-first {} || bat --style=numbers --color=always {}'
-  --preview-window=right:50%
-"
+typeset -ga FZF_PREVIEW_OPTS=(
+    --preview '[[ -d {} ]] && eza -la --color=always --group-directories-first {} || bat --style=numbers --color=always {}'
+    --preview-window right:50%
+)
 
 # -----------------------------
 # fzf Widgets
@@ -134,7 +132,7 @@ bindkey '^R' fzf-history-widget
 fzf-file-widget() {
     local selected
     selected=$(fd --type f --hidden --follow --exclude .git \
-        | fzf --height=40% --reverse --query="$LBUFFER") || return
+        | fzf "${FZF_PREVIEW_OPTS[@]}" --height=40% --reverse --query="$LBUFFER") || return
     LBUFFER+="$selected"
 }
 zle -N fzf-file-widget
@@ -143,7 +141,7 @@ bindkey '^T' fzf-file-widget
 fzf-cd-widget() {
     local selected
     selected=$(fd --type d --hidden --follow --exclude .git \
-        | fzf --height=40% --reverse) || return
+        | fzf "${FZF_PREVIEW_OPTS[@]}" --height=40% --reverse) || return
     cd "$selected"
 }
 zle -N fzf-cd-widget
