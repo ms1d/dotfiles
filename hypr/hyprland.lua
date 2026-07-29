@@ -117,11 +117,6 @@ hl.config({
 			ignore_opacity = false,
 			xray = true
 		},
-
-		motion_blur = {
-			enabled = true, -- causes flickers with blur!
-			samples = 15
-		}
 	},
 
 	animations = {
