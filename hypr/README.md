@@ -4,7 +4,7 @@ Configuration for Hyprland dynamic tiling Wayland compositor and related tools.
 
 ## Key Features
 
-- **Blurred Backgrounds**: Works well with the `foot` terminal.
+- **Blurred Backgrounds**: Works well with the `kitty` terminal.
 - **Custom Wallpapers**: Manually overwrite wallpapers in `/usr/share/hypr/wall*.png`
 - **Integrated Utilities**: `waybar`, `mako`, `fuzzel`, `cliphist`, `playerctl`.
 
@@ -26,7 +26,6 @@ Symlink the entire directory to your `.config`:
 ln -s ~/dotfiles/hypr ~/.config/hypr
 ```
 
-## Monitor & HiDPI
+## Lua and Hyprlang
 
-Configuration for HiDPI displays is located in `hidpi.conf`
-and sourced in the main `hyprland.conf`. Adjust monitor settings as needed.
+I have recently ported the old hyprlang config to lua, keeping both for reference.
