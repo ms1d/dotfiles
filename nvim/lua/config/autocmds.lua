@@ -67,35 +67,3 @@ api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
--- Focus main window on startup and open diagnostics
-api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        -- Use schedule to run as soon as Neovim is ready and idle
-        vim.schedule(function()
-            local wins = api.nvim_list_wins()
-            local main_win = nil
-
-            for _, win in ipairs(wins) do
-                local buf = api.nvim_win_get_buf(win)
-                local ft = api.nvim_buf_get_option(buf, "filetype")
-                if ft ~= "neo-tree" and ft ~= "qf" and ft ~= "notify" then
-                    main_win = win
-                end
-            end
-
-            -- Populate and open quickfix
-            vim.diagnostic.setqflist({ open = false })
-            vim.cmd("copen")
-
-            -- Open Neo-tree safely
-            pcall(function()
-                require("neo-tree.command").execute({ action = "show", source = "filesystem" })
-            end)
-
-            -- Ensure we focus the main editor window
-            if main_win then
-                api.nvim_set_current_win(main_win)
-            end
-        end)
-    end,
-})
