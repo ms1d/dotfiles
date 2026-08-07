@@ -1,19 +1,19 @@
 return {
 	{
-  "folke/snacks.nvim",
-  opts = {
-    image = {
-      enabled = true,
+		"folke/snacks.nvim",
+		opts = {
+			image = {
+				enabled = true,
 
-      doc = {
-        inline = false,
-        float = true,
-        max_width = 80,
-        max_height = 40,
-      },
-    },
-  },
-},
+				doc = {
+					inline = false,
+					float = true,
+					max_width = 80,
+					max_height = 40,
+				},
+			},
+		},
+	},
     {
         "folke/tokyonight.nvim",
         lazy = false,
