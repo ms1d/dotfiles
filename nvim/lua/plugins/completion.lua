@@ -1,11 +1,11 @@
 return {
     {
-        "L3MON4D3/LuaSnip",
+        "L3MON4D3/LuaSnip", -- snippet engine
         lazy = true,
         dependencies = { "rafamadriz/friendly-snippets" },
     },
     {
-        "hrsh7th/nvim-cmp",
+        "hrsh7th/nvim-cmp", -- completion engine
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-buffer",
@@ -38,7 +38,7 @@ return {
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
-                    format = function(entry, vim_item)
+                    format = function(_, vim_item)
                         return vim_item
                     end,
                 },
@@ -68,7 +68,7 @@ return {
         end,
     },
     {
-        "Exafunction/windsurf.nvim",
+        "Exafunction/windsurf.nvim", -- codeium
         dependencies = {
             "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",

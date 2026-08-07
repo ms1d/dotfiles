@@ -1,5 +1,5 @@
 -- Neovim Configuration
-vim.loader.enable()
+vim.loader.enable() -- Faster loads via compilation
 
 -- Structure:
 -- lua/
@@ -20,6 +20,7 @@ require("config.keymaps")
 require("config.autocmds")
 
 -- 2. Bootstrap Plugin Manager (lazy.nvim)
+-- Taken straight from docs
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -45,7 +46,6 @@ require("lazy").setup({
         { import = "plugins.ui" },
         { import = "plugins.treesitter" },
         { import = "plugins.git" },
-        { import = "plugins.activitywatch" },
     },
     -- Configure lazy.nvim UI
     ui = {

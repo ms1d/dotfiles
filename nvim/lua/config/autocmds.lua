@@ -25,6 +25,7 @@ api.nvim_create_autocmd("FileType", {
 
 -- Update diagnostics in insert mode
 vim.diagnostic.config({
+	virtual_lines = true,
     update_in_insert = true,
     float = {
         border = "rounded",
