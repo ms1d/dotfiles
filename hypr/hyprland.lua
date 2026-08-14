@@ -69,8 +69,8 @@ hl.bind("F9", hl.dsp.exec_cmd("pgrep -x waybar >/dev/null && pkill -x waybar || 
 
 hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill())
-hl.bind("F11", hl.dsp.window.fullscreen())
-hl.bind("SHIFT + F11", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind("SHIFT + F11", hl.dsp.window.fullscreen())
+hl.bind("SUPER + SHIFT + F11", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
 hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("zen-browser"))
 
