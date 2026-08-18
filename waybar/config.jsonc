@@ -3,7 +3,7 @@
     "position": "top",
 
     // Left / center / right layout
-    "modules-left": ["hyprland/workspaces", "custom/powerprofiles", "custom/mpris-loop", "custom/mpris-rewind", "mpris", "custom/mpris-next", "custom/mpris-shuffle"],
+    "modules-left": ["hyprland/workspaces", "custom/tlpget", "custom/mpris-loop", "custom/mpris-rewind", "mpris", "custom/mpris-next", "custom/mpris-shuffle"],
     "modules-center": ["backlight", "clock", "wireplumber"],
     "modules-right": ["bluetooth", "battery", "memory", "network"],
 
@@ -104,11 +104,11 @@
         "format-connected": " {device_alias}"
     },
 
-    "custom/powerprofiles": {
-        "format": "Mode: {}",
-        "exec": "powerprofilesctl get",
-        "on-click": "~/.local/bin/cycle-power-profile",
-        "interval": 1,
-        "tooltip": false
-    }
+	"custom/tlpget": {
+		"format": "{}",
+		"exec": "sudo -n ~/.config/waybar/scripts/waybar-tlp",
+		"on-click": "sudo -n ~/.config/waybar/scripts/waybar-tlp next",
+		"interval": 1,
+		"tooltip": true
+	}
 }

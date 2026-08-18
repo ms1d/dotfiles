@@ -1,0 +1,41 @@
+#!/bin/bash
+
+case "$1" in
+    next)
+        current=$(tlp-stat -s 2>/dev/null | awk -F'= ' '/^TLP profile/ {print $2}' | cut -d/ -f1)
+
+        case "$current" in
+            performance)
+                sudo /usr/bin/tlp balanced
+                ;;
+            balanced)
+                sudo /usr/bin/tlp power-saver
+                ;;
+            power-saver)
+                sudo /usr/bin/tlp performance
+                ;;
+            *)
+                sudo /usr/bin/tlp balanced
+                ;;
+        esac
+        ;;
+
+    *)
+        current=$(tlp-stat -s 2>/dev/null | awk -F'= ' '/^TLP profile/ {print $2}' | cut -d/ -f1)
+
+        case "$current" in
+            performance)
+                echo "󰓅 Performance"
+                ;;
+            balanced)
+                echo "󰾅 Balanced"
+                ;;
+            power-saver)
+                echo "󰾆 Power Saver"
+                ;;
+            *)
+                echo "󰾅 Unknown"
+                ;;
+        esac
+        ;;
+esac
