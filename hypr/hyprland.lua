@@ -26,12 +26,53 @@ hl.env("QT_FONT_DPI", 140)
 
 
 -- MONITOR
-hl.monitor({
-	output = "eDP-1",
-	mode = "2880x1800@120",
-	position = "0x0",
-    scale = 1
-})
+local presets = {
+	def = {
+		output = "eDP-1",
+		mode = "2880x1800@120",
+		position = "0x0",
+		scale = 1
+	},
+
+	def60 = {
+		output = "eDP-1",
+		mode = "2880x1800@60",
+		position = "0x0",
+		scale = 1
+	},
+
+	powersave = {
+		output = "eDP-1",
+		mode = "1280x800@60",
+		position = "0x0",
+		scale = 0.67
+	},
+
+	hdr = {
+		output = "eDP-1",
+
+		mode = "2880x1800@120",
+		position = "0x0",
+		scale = 1,
+
+		bitdepth = 10,
+		cm = "hdredid",
+
+		sdr_eotf = "srgb",
+
+		sdrbrightness = 1.0,
+		sdrsaturation = 1.1,
+
+		sdr_min_luminance = 0.005,
+		sdr_max_luminance = 200,
+
+		min_luminance = 0.005,
+		max_luminance = 616,
+		max_avg_luminance = 400,
+	}
+}
+
+hl.monitor(presets.def)
 
 
 
@@ -103,7 +144,7 @@ hl.config({
 		rounding = 20,
 
 		blur = {
-			brightness = 1.15,
+			brightness = 1,
 			enabled = true,
 			size = 13,
 			passes = 2,
