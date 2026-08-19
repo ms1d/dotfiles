@@ -61,7 +61,7 @@ local presets = {
 		sdr_eotf = "srgb",
 
 		sdrbrightness = 1.0,
-		sdrsaturation = 1.1,
+		sdrsaturation = 1.17,
 
 		sdr_min_luminance = 0.005,
 		sdr_max_luminance = 200,
@@ -144,7 +144,7 @@ hl.config({
 		rounding = 20,
 
 		blur = {
-			brightness = 1,
+			brightness = 1.1,
 			enabled = true,
 			size = 13,
 			passes = 2,
