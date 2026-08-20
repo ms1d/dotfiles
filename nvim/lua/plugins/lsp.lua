@@ -118,8 +118,7 @@ return {
                 },
             })
 
-            -- Enable the servers (Neovim will automatically use configurations from nvim-lspconfig)
-            vim.lsp.enable({ "clangd", "lua_ls", "vtsls", "tailwindcss", "pylsp", "marksman" })
+			vim.lsp.config("neocmake", {})
 
             -- Roslyn setup (keep using the plugin's own setup as it bridges to lspconfig/vim.lsp)
             require("roslyn").setup({
