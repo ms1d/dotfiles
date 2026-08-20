@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mkdir -p /home/mahad/Pictures/OS/tmp/ && cd /home/mahad/Pictures/OS/tmp/ && grim -l 0 hyprlock-tmp.png && hyprlock

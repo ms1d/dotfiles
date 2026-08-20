@@ -81,7 +81,7 @@ hl.monitor(presets.def)
 hl.bind("SUPER + ESCAPE", hl.dsp.exit())
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + SPACE" , hl.dsp.exec_cmd("fuzzel"))
-hl.bind("SUPER + L"	  , hl.dsp.exec_cmd("hyprlock"))
+hl.bind("SUPER + L"	  , hl.dsp.exec_cmd("/home/mahad/.local/bin/my-hyprlock"))
 
 for key, dir in pairs({ Left = "l", Right = "r", Up = "u", Down = "d", }) do
     hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = dir }))
