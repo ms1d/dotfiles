@@ -149,7 +149,7 @@ hl.config({
 			size = 13,
 			passes = 2,
 			contrast = 1.15,
-			noise = 0.1,
+			noise = 0.07,
 
 			new_optimizations = true,
 			ignore_opacity = false,
