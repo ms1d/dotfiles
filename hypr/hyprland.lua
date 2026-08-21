@@ -2,7 +2,7 @@ hl.on("hyprland.start", function()
     local startup = {
         "waybar",
         "mako",
-        "hyprctl setcursor default 24 && sleep 0.6 && hyprlock",
+        "hyprctl setcursor default 24 && sleep 0.6 && /home/mahad/.local/bin/my-hyprlock -i",
         "systemctl --user start hypridle.service",
         "sh -c 'wl-paste --watch cliphist store >/dev/null 2>&1 &'",
         "playerctld daemon",
