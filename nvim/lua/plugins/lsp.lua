@@ -120,6 +120,18 @@ return {
 
 			vim.lsp.config("neocmake", {})
 
+			vim.lsp.config("texlab", {
+				settings = {
+					texlab = {
+						chktex = {
+							onEdit = true,
+							onOpenAndSave = true,
+						},
+						diagnosticsDelay = 200
+					}
+				}
+			})
+
             -- Roslyn setup (keep using the plugin's own setup as it bridges to lspconfig/vim.lsp)
             require("roslyn").setup({
                 lsp = {
