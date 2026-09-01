@@ -48,7 +48,7 @@ compinit -C
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999999'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#a0a9d6'
 
 # -----------------------------
 # Plugins (ORDER MATTERS)
