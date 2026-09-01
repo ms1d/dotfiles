@@ -144,7 +144,7 @@ hl.config({
 		rounding = 20,
 
 		blur = {
-			brightness = 1.1,
+			brightness = 1,
 			enabled = true,
 			size = 13,
 			passes = 2,
