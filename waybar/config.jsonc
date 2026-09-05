@@ -14,8 +14,8 @@
         "player": "playerctld",
         "max-length": 70,
         "escape": true,
-        "on-scroll-up": "~/.config/waybar/scripts/mpris-scroll previous",
-        "on-scroll-down": "~/.config/waybar/scripts/mpris-scroll next",
+        "on-scroll-up": "/home/mahad/.config/waybar/scripts/mpris-scroll previous",
+        "on-scroll-down": "/home/mahad/.config/waybar/scripts/mpris-scroll next",
         "scroll-step": 500
     },
 
@@ -23,7 +23,7 @@
         "exec-if": "playerctl -p playerctld status >/dev/null 2>&1",
         "exec": "bash -c 's=$(playerctl -p playerctld loop); [[ $s == Track ]] && echo ⟲¹ || [[ $s == Playlist ]] && echo ⟲ || echo ∅'",
         "format": "{}",
-        "on-click": "~/.config/waybar/scripts/playerctl-toggle-loop",
+        "on-click": "/home/mahad/.config/waybar/scripts/playerctl-toggle-loop",
         "tooltip": false,
         "interval": 1
     },
@@ -106,33 +106,33 @@
 
 	"custom/tlpget": {
 		"format": "{}",
-		"exec": "sudo -n ~/.config/waybar/scripts/waybar-tlp",
-		"on-click": "sudo -n ~/.config/waybar/scripts/waybar-tlp next",
+		"exec": "sudo -n /home/mahad/.config/waybar/scripts/waybar-tlp",
+		"on-click": "sudo -n /home/mahad/.config/waybar/scripts/waybar-tlp next",
 		"interval": 1,
 		"tooltip": true
 	},
 
 	"custom/cpu-usg": {
 		"format": "{}%",
-		"exec": "~/.config/waybar/scripts/cpu-usg",
+		"exec": "/home/mahad/.config/waybar/scripts/cpu-usg",
 		"interval": 1
 	},
 
 	"custom/cpu-freq": {
 		"format": "{}GHz",
-		"exec": "~/.config/waybar/scripts/cpu-freq",
+		"exec": "/home/mahad/.config/waybar/scripts/cpu-freq",
 		"interval": 1
 	},
 
 	"custom/cpu-temp": {
 		"format": "{}°C",
-		"exec": "~/.config/waybar/scripts/cpu-temp",
+		"exec": "/home/mahad/.config/waybar/scripts/cpu-temp",
 		"interval": 1
 	},
 	
 	"custom/mem-usg": {
 		"format": "{}% RAM",
-		"exec": "~/.config/waybar/scripts/mem-usg",
+		"exec": "/home/mahad/.config/waybar/scripts/mem-usg",
 		"interval": 1
 	}
 }
