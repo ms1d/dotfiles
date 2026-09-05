@@ -5,7 +5,7 @@
     // Left / center / right layout
     "modules-left": ["hyprland/workspaces", "custom/tlpget", "custom/mpris-loop", "custom/mpris-rewind", "mpris", "custom/mpris-next", "custom/mpris-shuffle"],
     "modules-center": ["backlight", "clock", "wireplumber"],
-    "modules-right": ["bluetooth", "battery", "custom/cpu-usg", "custom/cpu-temp", "custom/cpu-freq", "custom/mem-usg", "network"],
+    "modules-right": ["bluetooth", "battery", "custom/cpu-temp", "custom/cpu-freq", "custom/mem-usg", "custom/cpu-usg", "network"],
 
     //TODO - make mpris more resistant to multiple audio sources
     "mpris": {
@@ -113,7 +113,7 @@
 	},
 
 	"custom/cpu-usg": {
-		"format": "{}%",
+		"format": "{}% CPU",
 		"exec": "/home/mahad/.config/waybar/scripts/cpu-usg",
 		"interval": 1
 	},
