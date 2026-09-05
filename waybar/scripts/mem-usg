@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sys-track -u | awk '{printf "%.1f\n", $1 * 100}'

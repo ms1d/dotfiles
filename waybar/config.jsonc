@@ -5,7 +5,7 @@
     // Left / center / right layout
     "modules-left": ["hyprland/workspaces", "custom/tlpget", "custom/mpris-loop", "custom/mpris-rewind", "mpris", "custom/mpris-next", "custom/mpris-shuffle"],
     "modules-center": ["backlight", "clock", "wireplumber"],
-    "modules-right": ["bluetooth", "battery", "memory", "network"],
+    "modules-right": ["bluetooth", "battery", "custom/cpu-usg", "custom/cpu-temp", "custom/cpu-freq", "custom/mem-usg", "network"],
 
     //TODO - make mpris more resistant to multiple audio sources
     "mpris": {
@@ -110,5 +110,29 @@
 		"on-click": "sudo -n ~/.config/waybar/scripts/waybar-tlp next",
 		"interval": 1,
 		"tooltip": true
+	},
+
+	"custom/cpu-usg": {
+		"format": "{}%",
+		"exec": "~/.config/waybar/scripts/cpu-usg",
+		"interval": 1
+	},
+
+	"custom/cpu-freq": {
+		"format": "{}GHz",
+		"exec": "~/.config/waybar/scripts/cpu-freq",
+		"interval": 1
+	},
+
+	"custom/cpu-temp": {
+		"format": "{}°C",
+		"exec": "~/.config/waybar/scripts/cpu-temp",
+		"interval": 1
+	},
+	
+	"custom/mem-usg": {
+		"format": "{}% RAM",
+		"exec": "~/.config/waybar/scripts/mem-usg",
+		"interval": 1
 	}
 }

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#printf "%f" $(sys-track -u)
+printf "%.2f\n" "$(echo "$(sys-track -f) / 1000000" | bc -l)"
