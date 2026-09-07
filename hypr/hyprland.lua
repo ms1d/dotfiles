@@ -127,6 +127,7 @@ end
 hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + SHIFT + mouse:272", hl.dsp.window.resize())
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag())
+hl.bind("SUPER + A", hl.dsp.exec_cmd("sudo -n /home/mahad/.config/waybar/scripts/waybar-tlp next"))
 
 
 -- VARS
