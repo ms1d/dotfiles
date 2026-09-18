@@ -1,7 +1,7 @@
 return {
     {
         "L3MON4D3/LuaSnip", -- snippet engine
-        lazy = true,
+		event = "InsertEnter",
         dependencies = { "rafamadriz/friendly-snippets" },
     },
     {
@@ -69,6 +69,7 @@ return {
     },
     {
         "Exafunction/windsurf.nvim", -- codeium
+		event = "InsertEnter",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",
