@@ -9,7 +9,7 @@ case "$1" in
                 sudo /usr/bin/tlp balanced
                 ;;
             balanced)
-                sudo /usr/bin/tlp power-saver
+                sudo /usr/bin/tlp power-saver && sleep 3 && sudo ryzenadj --stapm-limit=5000 --fast-limit=5000 --slow-limit=5000 
                 ;;
             power-saver)
                 sudo /usr/bin/tlp performance
