@@ -17,21 +17,6 @@ map("n", "go", function()
     end
 end, { desc = "Open diagnostic URL" })
 
--- Folding (UFO helper) - Using pcall to avoid errors if ufo is not loaded
-map("n", "zR", function() require("ufo").openAllFolds() end, { desc = "Open all folds" })
-map("n", "zM", function() require("ufo").closeAllFolds() end, { desc = "Close all folds" })
-map("n", "zp", function()
-    local ok, ufo = pcall(require, "ufo")
-    if ok then
-        local winid = ufo.peekFoldedLinesUnderCursor()
-        if not winid then
-            vim.lsp.buf.hover()
-        end
-    else
-        vim.lsp.buf.hover()
-    end
-end, { desc = "Preview fold or hover" })
-
 -- Window Navigation
 map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })

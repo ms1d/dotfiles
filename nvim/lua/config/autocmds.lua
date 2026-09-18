@@ -56,14 +56,3 @@ api.nvim_create_autocmd("DiagnosticChanged", {
         end
     end,
 })
-
--- Auto-open folds (UFO)
-api.nvim_create_autocmd("BufReadPost", {
-    callback = function()
-        local ok, ufo = pcall(require, "ufo")
-        if ok then
-            ufo.openFoldsExceptKinds({})
-        end
-    end,
-})
-
