@@ -1,8 +1,7 @@
 return {
 	{
 		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
+		event = "VeryLazy",
 
 		opts = {
 			image = {
@@ -72,49 +71,53 @@ return {
         end,
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("neo-tree").setup({
-                filesystem = {
-                    follow_current_file = { enabled = true },
-                    hijack_netrw_behavior = "open_default",
-                    use_libuv_file_watcher = true,
-                    filtered_items = {
-                        visible = false,
-                        hide_dotfiles = true,
-                        hide_gitignored = true,
-                        hide_by_name = {
-                            "node_modules",
-                            "build",                 -- Hide build artifacts
-                            "Testing",               -- Hide test results/folders
-                            "compile_commands.json", -- Hide LSP database
-                            "CMakeCache.txt",        -- Hide CMake temporary files
-                        },
-                        never_show = {
-                            ".DS_Store",
-                            "thumbs.db",
-                        },
-                    },
-                },
-            })
-            vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Explorer" })
-        end,
-    },
-    {
-        "kevinhwang91/nvim-ufo",
-        dependencies = { "kevinhwang91/promise-async" },
-        config = function()
-            require("ufo").setup()
-        end
-    },
-    { "nicolas-martin/region-folding.nvim" },
-    {
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+
+		cmd = "Neotree",
+
+		keys = {
+			{
+				"<leader>e",
+				"<cmd>Neotree toggle<CR>",
+				desc = "Toggle Explorer",
+			},
+		},
+
+		config = function()
+			require("neo-tree").setup({
+				filesystem = {
+					follow_current_file = { enabled = true },
+					hijack_netrw_behavior = "open_default",
+					use_libuv_file_watcher = true,
+
+					filtered_items = {
+						visible = false,
+						hide_dotfiles = true,
+						hide_gitignored = true,
+						hide_by_name = {
+							"node_modules",
+							"build",
+							"Testing",
+							"compile_commands.json",
+							"CMakeCache.txt",
+						},
+						never_show = {
+							".DS_Store",
+							"thumbs.db",
+						},
+					},
+				},
+			})
+		end,
+	},
+	{
         "folke/noice.nvim",
         event = "VeryLazy",
         dependencies = {
