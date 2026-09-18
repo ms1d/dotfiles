@@ -29,10 +29,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Folding (Using UFO)
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldmethod = "indent"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
+vim.opt.foldcolumn = "1"
 
 -- Search
 opt.ignorecase = true      -- Ignore case in search patterns
