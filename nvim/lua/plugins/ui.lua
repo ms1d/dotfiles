@@ -16,6 +16,24 @@ return {
 			},
 		},
 	},
+	{
+		"kevinhwang91/nvim-ufo",
+        event = "VeryLazy",
+        dependencies = {
+            "kevinhwang91/promise-async",
+        },
+		config = function()
+			require("ufo").setup({
+				provider_selector = function()
+					return { "treesitter", "indent" }
+				end,
+			})
+
+			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+            vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+			vim.keymap.set("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
+		end,
+	},
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -53,6 +71,8 @@ return {
             vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#7A849A" })
             vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#7A849A" })
             vim.api.nvim_set_hl(0, "Invisible", { bg = "none", fg = "none" })
+			vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#565f89", bg = "none", })
+			vim.api.nvim_set_hl(0, "Folded", { fg = "#4a416f", bg = "none", })
 
             -- Pop-up Window Highlights
             vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#363d4a", bold = true }) -- Subtle selection background

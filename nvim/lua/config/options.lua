@@ -16,6 +16,11 @@ opt.fillchars = {
     horizup = "┴",
     horizdown = "┬",
 	vert = "│",
+	foldopen = "",
+    foldclose = "",
+    fold = " ",
+    foldsep = " ",
+	foldinner = " "
 }
 
 opt.shortmess:append("I")  -- Disable the intro message (splash screen)
@@ -29,10 +34,11 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Folding (Using UFO)
-vim.opt.foldmethod = "indent"
-vim.opt.foldenable = true
-vim.opt.foldlevel = 99
-vim.opt.foldcolumn = "1"
+opt.foldmethod = "manual"
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldcolumn = "1"
 
 -- Search
 opt.ignorecase = true      -- Ignore case in search patterns
