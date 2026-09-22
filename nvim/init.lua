@@ -45,7 +45,8 @@ require("lazy").setup({
         { import = "plugins.ui" },
         { import = "plugins.treesitter" },
         { import = "plugins.git" },
-		{ import = "plugins.obsidian" }
+		{ import = "plugins.obsidian" },
+		{ import = "plugins.render-markdown" }
     },
     -- Configure lazy.nvim UI
     ui = {

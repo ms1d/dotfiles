@@ -1,7 +1,8 @@
 return {
 	{
 		"folke/snacks.nvim",
-		event = "VeryLazy",
+		lazy = false,
+		priority = 1000,
 
 		opts = {
 			image = {
@@ -40,7 +41,7 @@ return {
         priority = 1000,
         config = function()
             vim.cmd("colorscheme tokyonight")
-
+			
             -- Transparent Background Logic (ported from nobg.lua)
             local groups = {
                 "Normal", "NormalNC", "NormalFloat", "FloatBorder", "FloatTitle",
