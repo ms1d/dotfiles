@@ -1,0 +1,110 @@
+# -----------------------------
+# Environment
+# -----------------------------
+
+export EDITOR=nvim
+export REMARK_CONFIG="$HOME/.config/nvim"
+
+# Deduplicate PATH
+typeset -gU PATH path
+path+=("$HOME/.dotnet/tools")
+path+=("$HOME/.local/bin")
+path+=("$HOME/.local/share/nvim/mason/bin")
+export PATH
+
+[ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
+
+# -----------------------------
+# History
+# -----------------------------
+
+HISTSIZE=1000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+setopt appendhistory
+setopt sharehistory
+setopt inc_append_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt extended_history
+setopt hist_find_no_dups
+
+# -----------------------------
+# Completion System
+# -----------------------------
+
+autoload -Uz compinit
+
+# completion caching (startup speed)
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+
+compinit -C
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#a0a9d6'
+
+# -----------------------------
+# Keybindings
+# -----------------------------
+
+bindkey -v
+KEYTIMEOUT=1
+
+# -----------------------------
+# Shell Options
+# -----------------------------
+
+setopt autocd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt extendedglob
+setopt noclobber
+setopt nomatch
+
+# -----------------------------
+# Prompt
+# -----------------------------
+
+autoload -Uz colors && colors
+setopt prompt_subst
+
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+add-zsh-hook precmd vcs_info
+
+zstyle ':vcs_info:*' enable git
+
+# show branch + change flags
+zstyle ':vcs_info:git:*' formats '(%b%u%c)'
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
+
+# detect working tree changes
+zstyle ':vcs_info:git:*' check-for-changes true
+
+# symbols
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' stagedstr '+'
+# vi mode indicator
+function zle-keymap-select {
+    MODE=$([[ $KEYMAP == vicmd ]] && echo NORMAL || echo INSERT)
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-init {
+    MODE="INSERT"
+    zle reset-prompt
+}
+zle -N zle-line-init
+
+PROMPT='
+%{%F{6}%}%n@%m%{%f%} %{%F{4}%}%~%{%f%} %{%F{5}%}${vcs_info_msg_0_}%{%f%} %(?..%{%F{1}%}[%?]%{%f%})
+[%{%F{3}%}${MODE}%{%f%}] %{%F{2}%}>%{%f%} '
+
+RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
