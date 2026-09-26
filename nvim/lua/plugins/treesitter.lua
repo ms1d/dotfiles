@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleStat", "TSUpdate", "TSUpdateSync" },
         build = ":TSUpdate",
         config = function()
@@ -17,7 +17,7 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
-        lazy = false,
+        event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require("nvim-ts-autotag").setup({})
