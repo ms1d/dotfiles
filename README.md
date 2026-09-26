@@ -11,6 +11,7 @@ This repository contains configurations for:
 - **Zsh**
 - **Waybar**
 - **Kitty**
+- **Fuzzel**
 
 ## Installation
 
