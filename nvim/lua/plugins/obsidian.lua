@@ -10,8 +10,8 @@ return {
                 path = "/home/mahad/ArchNotes/",
 			},
 			{
-				name = "UniNotes",
-				path = "/home/mahad/UniNotes/"
+				name = "uni-notes",
+				path = "/home/mahad/uni-notes/"
 			}
 		}
 	}
