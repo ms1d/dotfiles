@@ -117,7 +117,7 @@ hl.bind("SUPER + SHIFT + F11", hl.dsp.window.fullscreen({ mode = "maximized" }))
 
 hl.bind("SUPER + SHIFT + code:201", hl.dsp.exec_cmd("zen-browser"))
 
-hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("kitty -e btop --override remember_window_size=no"))
+hl.bind("CTRL + SHIFT + ESCAPE", hl.dsp.exec_cmd("kitty --override remember_window_size=no -e btop"))
 
 for key,dir in pairs({ Left = "-1", Right = "+1" }) do
 	hl.bind("CTRL + SUPER + " .. key, hl.dsp.focus({ workspace = dir }))
