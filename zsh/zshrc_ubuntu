@@ -195,7 +195,7 @@ function zle-line-init {
 zle -N zle-line-init
 
 PROMPT='
-%{%F{6}%}%n@%m%{%f%} %{%F{4}%}%~%{%f%} %{%F{5}%}${vcs_info_msg_0_}%{%f%} %(?..%{%F{1}%}[%?]%{%f%})
+%{%F{6}%}%n@ubuntu24%{%f%} %{%F{4}%}%~%{%f%} %{%F{5}%}${vcs_info_msg_0_}%{%f%} %(?..%{%F{1}%}[%?]%{%f%})
 [%{%F{3}%}${MODE}%{%f%}] %{%F{2}%}>%{%f%} '
 
 RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
