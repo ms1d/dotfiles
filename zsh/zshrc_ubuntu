@@ -4,16 +4,13 @@
 
 export EDITOR=nvim
 export REMARK_CONFIG="$HOME/.config/nvim"
-export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
-export PATH="/opt/bennett/bin:$PATH"
-
-eval "$(batman --export-env)"
 
 # Deduplicate PATH
 typeset -gU PATH path
-path+=("$HOME/.dotnet/tools")
 path+=("$HOME/.local/bin")
 path+=("$HOME/.local/share/nvim/mason/bin")
+path+=("/opt/bennett/bin/")
+path+=("/opt/nvim-linux-x86_64/bin/")
 export PATH
 
 # -----------------------------
