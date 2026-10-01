@@ -5,6 +5,7 @@
 export EDITOR=nvim
 export REMARK_CONFIG="$HOME/.config/nvim"
 export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+export PATH="/opt/bennett/bin:$PATH"
 
 eval "$(batman --export-env)"
 
