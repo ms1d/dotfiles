@@ -14,8 +14,6 @@ path+=("$HOME/.local/bin")
 path+=("$HOME/.local/share/nvim/mason/bin")
 export PATH
 
-[ -f ~/.config/secrets/env ] && source ~/.config/secrets/env
-
 # -----------------------------
 # History
 # -----------------------------
@@ -58,12 +56,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#a0a9d6'
 source $HOME/.zsh/fzf-tab/fzf-tab.zsh
 
 # Autosuggestions AFTER fzf-tab
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/mahad/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # History substring search
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /home/mahad/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Directory jumping
 eval "$(zoxide init zsh)"
@@ -205,7 +203,7 @@ RPROMPT='%(?.%F{2}✔.%F{1}✖)%f %*'
 # Syntax Highlighting (LAST)
 # -----------------------------
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mahad/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Lazy-load NVM
 function nvm() {
