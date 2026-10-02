@@ -111,6 +111,10 @@ return {
 			},
 		},
 
+		init = function()
+			vim.g.loaded_nvim_dir_plugin = 1
+		end,
+
 		config = function()
 			require("neo-tree").setup({
 				filesystem = {
