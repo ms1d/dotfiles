@@ -28,3 +28,16 @@ map("n", "<C-Up>", ":resize -2<CR>", { desc = "Resize window up" })
 map("n", "<C-Down>", ":resize +2<CR>", { desc = "Resize window down" })
 map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Resize window left" })
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize window right" })
+
+vim.g.lsp_enabled = true
+
+map("n", "<leader>l", function()
+	vim.g.lsp_enabled = not vim.g.lsp_enabled
+	local enabled = vim.g.lsp_enabled
+
+	require("cmp").setup({ enabled = enabled })
+	vim.diagnostic.enable(enabled)
+
+	print("LSP: " .. (vim.g.lsp_enabled and "ON" or "OFF"))
+
+end, { desc = "Toggle LSP and Completions" } )
