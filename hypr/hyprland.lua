@@ -11,6 +11,8 @@ hl.on("hyprland.start", function()
     for _, cmd in ipairs(startup) do
         hl.exec_cmd(cmd)
     end
+
+	hl.exec_cmd("hyprpm reload -n")
 end)
 
 
@@ -158,6 +160,10 @@ hl.config({
 			ignore_opacity = false,
 			xray = true
 		},
+
+		motion_blur = {
+			enabled = true,
+		},
 	},
 
 	animations = {
@@ -174,6 +180,47 @@ hl.config({
 		kb_file = "~/.config/hypr/gb.xkb"
 	},
 })
+
+
+
+if hl.plugin.hyprglass then
+    local hg = hl.plugin.hyprglass
+
+    hg.config({
+        default_theme = "dark",
+        default_preset = "my-glass",
+        tint_color = 0x8899aa22,
+
+        brightness = 0.9,
+        dark = { brightness = 0.82 },
+        light = { adaptive_boost = 0.5 },
+
+        layers = { enabled = true },
+    })
+
+    -- Layer surfaces: each call whitelists the namespace and configures it
+    hg.layer("waybar", { preset = "subtle", mask_threshold = 0.05 })
+    hg.layer("swaync")
+    hg.layer("quickshell:bezel", { preset = "ui", mask_threshold = 0.3 })
+    hg.layer("debug-panel", { exclude = true })
+
+    -- Presets
+    hg.preset("my-glass", {
+		inherits = "glass",
+
+		blur_strength = 3.0,
+		noise_strength = 0.5,
+
+		refraction_strength = 8.0,
+		refraction_flow = 0.1,
+		refraction_spread = 1.0,
+
+		chromatic_aberration = 0.2,
+
+		brightness = 1.3,
+		contrast = 1.2,
+    })
+end
 
 
 
