@@ -126,6 +126,7 @@ return {
 						chktex = {
 							onEdit = true,
 							onOpenAndSave = true,
+							additionalArgs = { "-n1", "-n8" }
 						},
 						diagnosticsDelay = 200
 					}
