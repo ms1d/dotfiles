@@ -1,7 +1,7 @@
 return {
 	"obsidian-nvim/obsidian.nvim",
 	version = "*",
-	event = "VeryLazy",
+	--event = "VeryLazy",
 	ft = "markdown",
 	---@module 'obsidian'
 	---@type obsidian.config

@@ -19,7 +19,7 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-        event = "VeryLazy",
+        event = "BufReadPost",
         dependencies = {
             "kevinhwang91/promise-async",
         },
@@ -41,7 +41,7 @@ return {
         priority = 1000,
         config = function()
             vim.cmd("colorscheme tokyonight")
-			
+
             -- Transparent Background Logic (ported from nobg.lua)
             local groups = {
                 "Normal", "NormalNC", "NormalFloat", "FloatBorder", "FloatTitle",
@@ -58,7 +58,17 @@ return {
                 "LspInfoBorder", "LspInfoTitle", "LspInlayHint",
                 "TSNodeKey", "TSNodeUnmatched",
                 "DiagnosticVirtualTextError", "DiagnosticVirtualTextWarn", "DiagnosticVirtualTextInfo", "DiagnosticVirtualTextHint",
-				"DiagnosticNormal", "DiagnosticCursorLine"
+				"DiagnosticNormal", "DiagnosticCursorLine",
+
+				-- Blink.cmp
+				"BlinkCmpMenu", "BlinkCmpMenuBorder", "BlinkCmpMenuSelection",
+				"BlinkCmpLabel", "BlinkCmpLabelDeprecated", "BlinkCmpLabelMatch",
+				"BlinkCmpLabelDetail", "BlinkCmpLabelDescription",
+				"BlinkCmpKind", "BlinkCmpSource",
+				"BlinkCmpGhostText", "BlinkCmpDoc",
+				"BlinkCmpDocBorder", "BlinkCmpDocSeparator",
+				"BlinkCmpSignatureHelp", "BlinkCmpSignatureHelpBorder",
+
             }
 
             for _, group in ipairs(groups) do
@@ -89,6 +99,17 @@ return {
             vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "none", bg = "none" })
 
 			vim.api.nvim_set_hl(0, "TabLineSel", { bold = true })
+
+			-- Blink.cmp highlights
+			vim.api.nvim_set_hl(0, "BlinkCmpMenu", { bg = "none" })
+			vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#444b6a", bg = "none" })
+			vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#363d4a", bold = true })
+
+			vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = "none" })
+			vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#444b6a", bg = "none" })
+
+			vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelp", { bg = "none" })
+			vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#444b6a", bg = "none" })
         end,
     },
     {

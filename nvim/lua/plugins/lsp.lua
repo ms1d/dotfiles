@@ -28,7 +28,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
-            "hrsh7th/cmp-nvim-lsp",
+            "saghen/blink.cmp",
             "seblyng/roslyn.nvim",
             "SmiteshP/nvim-navic",
         },
@@ -55,7 +55,7 @@ return {
             })
 
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- Set global LSP defaults
             vim.lsp.config("*", {
