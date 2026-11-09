@@ -5,8 +5,6 @@
 export EDITOR=nvim
 export REMARK_CONFIG="$HOME/.config/nvim"
 
-eval "$(batman --export-env)"
-
 # Deduplicate PATH
 typeset -gU PATH path
 path+=("$HOME/.dotnet/tools")
