@@ -20,7 +20,6 @@ return {
 				function() Snacks.picker.files() end,
 				desc = "Find Files",
 			},
-
 			{
 				"<leader>fp",
 				function() Snacks.picker.projects() end,
@@ -35,6 +34,16 @@ return {
 				"<leader>fb",
 			function() Snacks.picker.buffers() end,
 				desc = "Find Buffers",
+			},
+			{
+				"<leader>fk",
+			function() Snacks.picker.keymaps() end,
+				desc = "Find Keymaps",
+			},
+			{
+				"<leader>fgd",
+			function() Snacks.picker.git_diff() end,
+				desc = "Find git diffs",
 			},
 			{
 				"<leader>sg",
