@@ -4,6 +4,50 @@ return {
 		lazy = false,
 		priority = 1000,
 
+		keys = {
+			{
+				"<leader>s",
+				function() Snacks.picker() end,
+				desc = "List all Snacks pickers"
+			},
+			{
+				"<leader>e",
+				function() Snacks.explorer() end,
+				desc = "Toggle File Explorer"
+			},
+			{
+				"<leader>ff",
+				function() Snacks.picker.files() end,
+				desc = "Find Files",
+			},
+
+			{
+				"<leader>fp",
+				function() Snacks.picker.projects() end,
+				desc = "Find Projects",
+			},
+			{
+				"<leader>fr",
+				function() Snacks.picker.recent() end,
+				desc = "Recent Files",
+			},
+			{
+				"<leader>fb",
+			function() Snacks.picker.buffers() end,
+				desc = "Find Buffers",
+			},
+			{
+				"<leader>sg",
+				function() Snacks.picker.grep() end,
+				desc = "Live Grep",
+			},
+			{
+				"<leader>sw",
+				function() Snacks.picker.grep_word() end,
+				desc = "Grep Word",
+			},
+		},
+
 		opts = {
 			image = {
 				enabled = true,
@@ -13,6 +57,34 @@ return {
 					float = true,
 					max_width = 80,
 					max_height = 40,
+				},
+			},
+
+			explorer = {
+				enabled = true,
+				replace_netrw = true,
+				trash = true
+			},
+
+			picker = {
+				enabled = true,
+
+				sources = {
+					projects = {
+						dev = {
+							"~/Projects/"
+						},
+						max_depth = 3
+					},
+					explorer = {
+						follow_file = true,
+						hidden = false,
+						ignored = false,
+						exclude = {
+							"build",
+							"node_modules"
+						}
+					}
 				},
 			},
 		},
@@ -112,57 +184,6 @@ return {
 			vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#444b6a", bg = "none" })
         end,
     },
-    {
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-
-		cmd = "Neotree",
-
-		keys = {
-			{
-				"<leader>e",
-				"<cmd>Neotree toggle<CR>",
-				desc = "Toggle Explorer",
-			},
-		},
-
-		init = function()
-			vim.g.loaded_nvim_dir_plugin = 1
-		end,
-
-		config = function()
-			require("neo-tree").setup({
-				filesystem = {
-					follow_current_file = { enabled = true },
-					hijack_netrw_behavior = "open_default",
-					use_libuv_file_watcher = true,
-
-					filtered_items = {
-						visible = false,
-						hide_dotfiles = true,
-						hide_gitignored = true,
-						hide_by_name = {
-							"node_modules",
-							"build",
-							"Testing",
-							"compile_commands.json",
-							"CMakeCache.txt",
-						},
-						never_show = {
-							".DS_Store",
-							"thumbs.db",
-						},
-					},
-				},
-			})
-		end,
-	},
 	{
         "folke/noice.nvim",
         event = "VeryLazy",
