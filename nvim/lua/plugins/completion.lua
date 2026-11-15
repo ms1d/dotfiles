@@ -18,6 +18,10 @@ return {
 			require("nvim-autopairs").setup()
 
 			require("blink.cmp").setup({
+				enabled = function()
+					return vim.g.lsp_enabled
+				end,
+
 				keymap = {
 					preset = "default",
 

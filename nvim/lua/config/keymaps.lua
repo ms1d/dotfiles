@@ -35,7 +35,6 @@ map("n", "<leader>l", function()
 	vim.g.lsp_enabled = not vim.g.lsp_enabled
 	local enabled = vim.g.lsp_enabled
 
-	require("cmp").setup({ enabled = enabled })
 	vim.diagnostic.enable(enabled)
 
 	print("LSP: " .. (vim.g.lsp_enabled and "ON" or "OFF"))
