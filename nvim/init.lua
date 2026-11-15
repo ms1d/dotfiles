@@ -11,7 +11,6 @@ vim.loader.enable() -- Faster loads via compilation
 --     lsp.lua        -> LSP, Mason, formatting
 --     completion.lua -> CMP, snippets, autopairs
 --     ui.lua         -> Colorscheme, neo-tree
---     treesitter.lua -> Treesitter
 
 -- 1. Load Core Config
 require("config.options")
